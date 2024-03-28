@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Rush : MonoBehaviour , IDamegeable, IAttackable
+public class Enemy_Rush : MonoBehaviour , IDamageable, IAttackable
 {
+    UniversalMove um;
+
     public int hp { get; set; }
     public int defenceLayer { get; set; }
     public int attackPower { get; set; }
@@ -11,16 +13,15 @@ public class Enemy_Rush : MonoBehaviour , IDamegeable, IAttackable
 
     void Start()
     {
-        hp = 1;
-
-        attackPower = 1;
+        um = new UniversalMove();
+        um.moveSpeed = 1;
     }
 
     void Update()
     {
-        
+        um.Move(new Vector2(0,-1), transform);
     }
-    public void TakeDamege(int damege)
+    public void TakeDamage(int damege)
     {
 
     }
