@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManager 
+public class TimeManager
 {
-   
+    public float time;
+
+    public  void TimeUpdate()
+    {
+        time += Time.deltaTime;
+    }
 }

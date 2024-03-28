@@ -1,8 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ScoreMaager 
+public class ScoreManager
 {
-    
+    private static int score = 0;
+    public static void AddScore(int _score)
+    {
+        score += _score;
+    }    
+
+    public static int GetScore()
+    {
+        return score;
+    }
 }
