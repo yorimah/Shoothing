@@ -1,10 +1,10 @@
-public interface IDamegeable
+public interface IDamageable
 {
     public int hp { get; set; }
 
     int defenceLayer { get; set; }
 
-    public void TakeDamege(int damege);
+    public void TakeDamage(int damege);
 
     public void Die();
 }
