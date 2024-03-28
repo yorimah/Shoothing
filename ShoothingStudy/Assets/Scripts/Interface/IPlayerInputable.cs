@@ -6,5 +6,5 @@ public interface IPlayerInputable
 
     public bool isShot { get; set; }
 
-    public void PlayerInput();
+    public void InputUpdate();
 }
