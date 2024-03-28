@@ -4,7 +4,7 @@ public interface IDamageable
 
     int defenceLayer { get; set; }
 
-    public void TakeDamage(int damege);
+    public void TakeDamage(int damage);
 
     public void Die();
 }
