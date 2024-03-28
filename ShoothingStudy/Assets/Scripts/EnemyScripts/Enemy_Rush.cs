@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_Rush : MonoBehaviour , IDamageable, IAttackable
 {
-    UniversalMove um;
+    IMoveDirectionSetable um;
 
     public int hp { get; set; }
     public int defenceLayer { get; set; }
@@ -13,7 +13,7 @@ public class Enemy_Rush : MonoBehaviour , IDamageable, IAttackable
 
     void Start()
     {
-        um = new UniversalMove();
+        um = Locator.Resolve<IMoveDirectionSetable>();
         um.moveSpeed = 1;
     }
 
