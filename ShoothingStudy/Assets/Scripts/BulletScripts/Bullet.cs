@@ -49,7 +49,7 @@ public class Bullet : MonoBehaviour, IAttackable
 
     void Update()
     {
-        mds.Move(mds.moveDirection);
+        mds.Move(mds.moveDirection,transform.position,transform);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
