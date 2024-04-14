@@ -48,6 +48,7 @@ public class Enemy_Rush : MonoBehaviour , IDamageable, IAttackable
     {
         um = Locator.Resolve<IMoveDirectionSetable>();
         um.moveSpeed = _moveSpeed;
+        
 
         startPos = transform.position;
         plPos = GameObject.Find("Player").transform.position;
