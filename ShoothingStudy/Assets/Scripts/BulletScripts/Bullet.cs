@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour, IAttackable
 
     // ’eŠÛ‚Ì”ò‚ñ‚Å‚¢‚­•ûŒü‚Ìw’è‚Å‚·A¶¬‚·‚éÛ‚É-1~1‚Ì”ÍˆÍ‚Åİ’è‚µ‚Ä‚­‚¾‚³‚¢
     public Vector2 direction = Vector2.zero;
+    Vector2 startPos;
 
     // ’e‘¬‚Å‚·A¶¬‚·‚éÛ‚Éİ’è‚µ‚½•û‚ª‚¢‚¢‚©‚à‚Å‚·
     public int speed = 10;
@@ -44,12 +45,15 @@ public class Bullet : MonoBehaviour, IAttackable
     void Start()
     {
         mds = Locator.Resolve<IMoveDirectionSetable>();
-        mds.moveDirection = direction;
+        mds.moveSpeed = speed;
+
+        startPos = transform.position;
     }
 
     void Update()
     {
-        mds.Move(mds.moveDirection,transform.position,transform);
+        mds.moveDirection = direction;
+        mds.Move(mds.moveDirection,startPos, transform);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

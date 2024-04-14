@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Shot : MonoBehaviour, IDamageable, IAttackable, IShotable
+public class Enemy_Shot : MonoBehaviour, IDamageable, IAttackable
 {
     IMoveDirectionSetable um;
 
+    [SerializeField]UniversalShot uShot;
+
+    Vector3 plPos;
     Vector3 startPos;
 
     [SerializeField]
@@ -22,9 +25,6 @@ public class Enemy_Shot : MonoBehaviour, IDamageable, IAttackable, IShotable
     [SerializeField]
     int _hp = 1;
 
-    // ‹…OBJ
-    [SerializeField]
-    GameObject _bullet;
     public int attackPower
     {
         get { return _attackPower; }
@@ -45,10 +45,6 @@ public class Enemy_Shot : MonoBehaviour, IDamageable, IAttackable, IShotable
         get { return _defenceLayer; }
         set { _defenceLayer = value; }
     }
-    public GameObject bullet {
-        get { return _bullet; }
-        set { _bullet = value; } 
-    }
 
 
     void Start()
@@ -57,11 +53,18 @@ public class Enemy_Shot : MonoBehaviour, IDamageable, IAttackable, IShotable
         um.moveSpeed = _moveSpeed;
 
         startPos = transform.position;
+        plPos = GameObject.Find("Player").transform.position;
+
     }
 
     void Update()
     {
         um.Move(startPos + new Vector3(0, -1, 0), startPos, transform);
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            uShot.Shot(plPos,transform);
+        }
 
     }
     public void TakeDamage(int damege)
@@ -85,10 +88,7 @@ public class Enemy_Shot : MonoBehaviour, IDamageable, IAttackable, IShotable
     {
         Destroy(gameObject);
     }
-    public void Shot (Vector2 direction)
-    {
 
-    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
