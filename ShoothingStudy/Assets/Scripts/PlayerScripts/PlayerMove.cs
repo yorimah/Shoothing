@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMove : IMoveable
 {
-    public int moveSpeed { get; set; }
+    public int moveSpeed { get; set; } = 10;
 
     public void Move(Vector2 input, Transform transform)
     {

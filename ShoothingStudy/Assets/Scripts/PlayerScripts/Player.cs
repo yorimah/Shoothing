@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamageable
 {
     IPlayerInputable iPI;
-    IShotable iShot;
+    // IShotable iShot;
     IMoveable iMove;
 
     public int hp { get; set; } = 3;
@@ -63,7 +63,8 @@ public class Player : MonoBehaviour, IDamageable
 
         if (iPI.isShot)
         {
-            iShot.Shot(Vector2.up);
+            Debug.Log("Ç§Ç¡ÇøÇ·Ç§ÇÊÅ[ÇÒ");
+            // iShot.Shot(Vector2.up);
         }
     }
 
