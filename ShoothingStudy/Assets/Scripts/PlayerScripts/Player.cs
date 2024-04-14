@@ -51,6 +51,8 @@ public class Player : MonoBehaviour, IDamageable
 
         iShot.bullet = this.bullet;
 
+        
+
         hp = 3;
         defenceLayer = 1;
     }
