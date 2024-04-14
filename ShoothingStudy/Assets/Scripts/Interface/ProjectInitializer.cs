@@ -7,6 +7,6 @@ public static class ProjectInitializer
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Initialize()
     {
-        Locator.Register<IMoveDirectionSetable>(new UniversalMove());
+        Locator.Register<IMoveDirectionSetable, UniversalMove>();
     }
 }
