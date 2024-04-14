@@ -6,5 +6,5 @@ public interface IMoveDirectionSetable
 
     public int moveSpeed { get; set; }
 
-    public void Move(Vector2 input , Transform tf);
+    public void Move(Vector2 plPos ,Vector2 startPos, Transform tf);
 }
