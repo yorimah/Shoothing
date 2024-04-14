@@ -6,8 +6,10 @@ public class PlayerMove : IMoveable
 {
     public int moveSpeed { get; set; }
 
-    public void Move(Vector2 input)
+    public void Move(Vector2 input, Transform transform)
     {
-
+        Vector2 pos = transform.position;
+        pos += input * moveSpeed * Time.deltaTime;
+        transform.position = pos;
     }
 }

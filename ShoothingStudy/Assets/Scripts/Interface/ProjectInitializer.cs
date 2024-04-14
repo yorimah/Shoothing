@@ -8,5 +8,11 @@ public static class ProjectInitializer
     private static void Initialize()
     {
         Locator.Register<IMoveDirectionSetable>(new UniversalMove());
+
+        
+
+        // プレイヤー関連
+        Locator.Register<IPlayerInputable, PlayerInput>();
+        Locator.Register<IMoveable, PlayerMove>();
     }
 }

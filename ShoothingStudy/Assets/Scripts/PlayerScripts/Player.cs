@@ -46,12 +46,10 @@ public class Player : MonoBehaviour, IDamageable
     void Start()
     {
         iPI = Locator.Resolve<IPlayerInputable>();
-        iShot = Locator.Resolve<IShotable>();
+        //iShot = Locator.Resolve<IShotable>();
         iMove = Locator.Resolve<IMoveable>();
 
-        iShot.bullet = this.bullet;
-
-        
+        // iShot.bullet = this.bullet;
 
         hp = 3;
         defenceLayer = 1;
@@ -61,7 +59,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         iPI.InputUpdate();
 
-        iMove.Move(iPI.inputMove);
+        iMove.Move(iPI.inputMove, transform);
 
         if (iPI.isShot)
         {
