@@ -7,6 +7,7 @@ public class Player : MonoBehaviour, IDamageable
     IPlayerInputable iPI;
     // IShotable iShot;
     IMoveable iMove;
+    IPlayerData iPD;
 
     public int hp { get; set; } = 3;
     public int defenceLayer { get; set; } = 1;
@@ -29,25 +30,12 @@ public class Player : MonoBehaviour, IDamageable
         //GameSceneManager.SceneChange();
     }
 
-    static int GetHP()
-    {
-        // èëÇ´ï˚ÇÌÇ©ÇÒÇ…Ç·Å[Ç¢
-        // return hp;
-        return 3;
-    }
-
-    static Vector2 GetPosition()
-    {
-        // èëÇ´ï˚ÇÌÇ©ÇÒÇ…Ç·Å[Ç¢
-        // return transform.position;
-        return Vector2.zero;
-    }
-
     void Start()
     {
         iPI = Locator.Resolve<IPlayerInputable>();
         //iShot = Locator.Resolve<IShotable>();
         iMove = Locator.Resolve<IMoveable>();
+        iPD = Locator.Resolve<IPlayerData>();
 
         // iShot.bullet = this.bullet;
 
@@ -57,6 +45,9 @@ public class Player : MonoBehaviour, IDamageable
 
     void Update()
     {
+        iPD.PlayerHP = hp;
+        iPD.PlayerPosition = new Vector2(transform.position.x, transform.position.y);
+
         iPI.InputUpdate();
 
         iMove.Move(iPI.inputMove, transform);
