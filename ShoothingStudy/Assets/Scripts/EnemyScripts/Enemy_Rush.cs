@@ -88,6 +88,7 @@ public class Enemy_Rush : MonoBehaviour , IDamageable, IAttackable
 
     public void Die()
     {
+        ScoreManager.AddScore(100);
         Destroy(gameObject);
     }
 

@@ -26,6 +26,10 @@ public class Enemy_Shot : MonoBehaviour, IDamageable, IAttackable
     // 体力
     [SerializeField]
     int _hp = 1;
+    [SerializeField]
+    float _shotSpan = 3;
+
+    float _shotSpanCount = 0;
 
     public int attackPower
     {
@@ -67,11 +71,13 @@ public class Enemy_Shot : MonoBehaviour, IDamageable, IAttackable
 
         um.Move(startPos + new Vector3(0, -1, 0), startPos, transform);
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        _shotSpanCount += Time.deltaTime;
+        if (_shotSpanCount > _shotSpan)
         {
             // 撃つとき座標プレイヤー座標取得
             plPos = iPD.PlayerPosition;
             uShot.Shot(plPos,transform);
+            _shotSpanCount = 0;
         }
 
     }
@@ -100,6 +106,7 @@ public class Enemy_Shot : MonoBehaviour, IDamageable, IAttackable
 
     public void Die()
     {
+        ScoreManager.AddScore(100);
         Destroy(gameObject);
     }
 
