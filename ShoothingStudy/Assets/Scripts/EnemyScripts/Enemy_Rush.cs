@@ -6,6 +6,8 @@ public class Enemy_Rush : MonoBehaviour , IDamageable, IAttackable
 {
     IMoveDirectionSetable um;
 
+    IPlayerData iPD;
+
     Vector3 plPos;
     Vector3 startPos;
 
@@ -48,10 +50,12 @@ public class Enemy_Rush : MonoBehaviour , IDamageable, IAttackable
     {
         um = Locator.Resolve<IMoveDirectionSetable>();
         um.moveSpeed = _moveSpeed;
-        
+
+        iPD = Locator.Resolve<IPlayerData>();
 
         startPos = transform.position;
-        plPos = GameObject.Find("Player").transform.position;
+        // plPos = GameObject.Find("Player").transform.position;
+        plPos = iPD.PlayerPosition;
     }
 
     void Update()
@@ -59,10 +63,16 @@ public class Enemy_Rush : MonoBehaviour , IDamageable, IAttackable
         um.Move(plPos,startPos,transform);
 
     }
-    public void TakeDamage(int damege)
-    {
 
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            Die();
+        }
     }
+
     public void Attack(GameObject collision)
     {
         if (collision.TryGetComponent<IDamageable>(out IDamageable dmg))

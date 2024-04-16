@@ -9,7 +9,7 @@ public class UniversalShot : MonoBehaviour
 
     public void Shot(Vector2 direction, Transform tf)
     {
-        Instantiate(bullet, tf);
+        Instantiate(bullet, tf.position, Quaternion.identity);
         blt = bullet.GetComponent<Bullet>();
 
         blt.direction = direction;

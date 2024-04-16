@@ -5,15 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamageable
 {
     IPlayerInputable iPI;
-    // IShotable iShot;
     IMoveable iMove;
     IPlayerData iPD;
+
+    [SerializeField]
+    UniversalShot us;
 
     public int hp { get; set; } = 3;
     public int defenceLayer { get; set; } = 1;
 
-    [SerializeField]
-    GameObject bullet;
 
     public void TakeDamage(int damage)
     {
@@ -26,6 +26,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        Debug.Log("プレイヤー死亡");
         // ゲームオーバー
         //GameSceneManager.SceneChange();
     }
@@ -33,11 +34,9 @@ public class Player : MonoBehaviour, IDamageable
     void Start()
     {
         iPI = Locator.Resolve<IPlayerInputable>();
-        //iShot = Locator.Resolve<IShotable>();
         iMove = Locator.Resolve<IMoveable>();
         iPD = Locator.Resolve<IPlayerData>();
 
-        // iShot.bullet = this.bullet;
 
         hp = 3;
         defenceLayer = 1;
@@ -55,7 +54,7 @@ public class Player : MonoBehaviour, IDamageable
         if (iPI.isShot)
         {
             Debug.Log("うっちゃうよーん");
-            // iShot.Shot(Vector2.up);
+            us.Shot(new Vector2(transform.position.x, transform.position.y + 1), transform);
         }
     }
 

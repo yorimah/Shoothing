@@ -6,6 +6,8 @@ public class Enemy_Shot : MonoBehaviour, IDamageable, IAttackable
 {
     IMoveDirectionSetable um;
 
+    IPlayerData iPD;
+
     [SerializeField]UniversalShot uShot;
 
     Vector3 plPos;
@@ -52,25 +54,37 @@ public class Enemy_Shot : MonoBehaviour, IDamageable, IAttackable
         um = Locator.Resolve<IMoveDirectionSetable>();
         um.moveSpeed = _moveSpeed;
 
+        iPD = Locator.Resolve<IPlayerData>();
+
         startPos = transform.position;
-        plPos = GameObject.Find("Player").transform.position;
+        //plPos = GameObject.Find("Player").transform.position;
+        plPos = iPD.PlayerPosition;
 
     }
 
     void Update()
     {
+
         um.Move(startPos + new Vector3(0, -1, 0), startPos, transform);
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            // 撃つとき座標プレイヤー座標取得
+            plPos = iPD.PlayerPosition;
             uShot.Shot(plPos,transform);
         }
 
     }
-    public void TakeDamage(int damege)
-    {
 
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            Die();
+        }
     }
+
     public void Attack(GameObject collision)
     {
         if (collision.TryGetComponent<IDamageable>(out IDamageable dmg))

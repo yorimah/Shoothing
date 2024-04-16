@@ -13,6 +13,7 @@ public class DataTest : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(iPD.PlayerHP);
         Debug.Log(iPD.PlayerPosition);
     }
 }
