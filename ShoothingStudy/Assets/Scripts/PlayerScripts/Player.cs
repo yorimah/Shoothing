@@ -28,7 +28,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         Debug.Log("プレイヤー死亡");
         // ゲームオーバー
-        //GameSceneManager.SceneChange();
+        SceneChangeManager.TitleSceneLoad();
 
         Destroy(gameObject);
     }
