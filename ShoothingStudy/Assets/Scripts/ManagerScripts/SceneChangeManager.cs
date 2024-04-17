@@ -6,6 +6,7 @@ public class SceneChangeManager
     static void TitleSceneLoad()
     {
         SceneManager.LoadScene("TitleScene");
+
     }
 
     static void GameSceneLoad()
