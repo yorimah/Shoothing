@@ -44,13 +44,13 @@ public class PlayerInput : IPlayerInputable
 
         inputMove = new Vector2(moveX, moveY);
 
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             isShot = true;
         }
-        else
-        {
-            isShot = false;
-        }
+        //else
+        //{
+        //    isShot = false;
+        //}
     }
 }

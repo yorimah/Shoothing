@@ -29,6 +29,8 @@ public class Player : MonoBehaviour, IDamageable
         Debug.Log("プレイヤー死亡");
         // ゲームオーバー
         //GameSceneManager.SceneChange();
+
+        Destroy(gameObject);
     }
 
     void Start()
@@ -54,7 +56,9 @@ public class Player : MonoBehaviour, IDamageable
         if (iPI.isShot)
         {
             Debug.Log("うっちゃうよーん");
-            us.Shot(new Vector2(transform.position.x, transform.position.y + 1), transform);
+            us.Shot(new Vector2(transform.position.x, transform.position.y + 10), transform);
+
+            iPI.isShot = false;
         }
     }
 

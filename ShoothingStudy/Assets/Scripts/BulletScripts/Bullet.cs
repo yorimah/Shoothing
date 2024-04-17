@@ -18,6 +18,8 @@ public class Bullet : MonoBehaviour, IAttackable
     [SerializeField]
     int _attackLayer = 0;
 
+    float timer = 0;
+
     // ‚»‚ê‚¼‚êSerializeField‚ÅŒ©‚¦‚é‚æ‚¤‚É•Ê‚Ì•Ï”‚É’u‚«Š·‚¦‚Ä‚¨‚è‚Ü‚·
     public int attackPower
     {
@@ -54,6 +56,13 @@ public class Bullet : MonoBehaviour, IAttackable
     {
         mds.moveDirection = direction;
         mds.Move(mds.moveDirection,startPos, transform);
+
+        // ŽžŠÔ‚ÅÁ‹Ž
+        timer += Time.deltaTime;
+        if (timer >= 3)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
