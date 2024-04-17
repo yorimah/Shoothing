@@ -6,10 +6,10 @@ public class SceneChangeManager
     public static void TitleSceneLoad()
     {
         SceneManager.LoadScene("TitleScene");
-
+        ScoreManager.AddScore(-9999);
     }
 
-    static void GameSceneLoad()
+    public static void GameSceneLoad()
     {
         SceneManager.LoadScene("GameScene");
     }

@@ -4,7 +4,11 @@ public class ScoreManager
     public static void AddScore(int _score)
     {
         score += _score;
-    }    
+        if (score < 0)
+        {
+            score = 0;
+        }
+    }
 
     public static int GetScore()
     {
