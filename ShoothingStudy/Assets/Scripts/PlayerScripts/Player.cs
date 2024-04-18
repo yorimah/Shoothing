@@ -55,8 +55,7 @@ public class Player : MonoBehaviour, IDamageable
 
         if (iPI.isShot)
         {
-            Debug.Log("Ç§Ç¡ÇøÇ·Ç§ÇÊÅ[ÇÒ");
-            us.Shot(new Vector2(transform.position.x, transform.position.y + 10), transform);
+            us.Shot(new Vector2(this.transform.position.x, this.transform.position.y + 10), transform);
 
             iPI.isShot = false;
         }

@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class UniversalShot : MonoBehaviour
 {
-    Bullet blt;
     public GameObject bullet;
 
     public void Shot(Vector2 direction, Transform tf)
     {
         Instantiate(bullet, tf.position, Quaternion.identity);
-        blt = bullet.GetComponent<Bullet>();
+        bullet.GetComponent<Bullet>().direction = direction;
 
-        blt.direction = direction;
     }
 }

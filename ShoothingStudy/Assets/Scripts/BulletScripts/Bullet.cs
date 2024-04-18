@@ -50,12 +50,13 @@ public class Bullet : MonoBehaviour, IAttackable
         mds.moveSpeed = speed;
 
         startPos = transform.position;
+        mds.moveDirection = direction;
     }
 
     void Update()
     {
         mds.moveDirection = direction;
-        mds.Move(mds.moveDirection,startPos, transform);
+        mds.Move(mds.moveDirection, startPos, transform);
 
         // éûä‘Ç≈è¡ãé
         timer += Time.deltaTime;
